@@ -9,3 +9,4 @@ CREATE TABLE accounts (
                         FOREIGN KEY (account_type_id) REFERENCES account_types(id),
                         FOREIGN KEY (balance_id) REFERENCES balances(id)
                         );
+CREATE UNIQUE INDEX uidx_accnumber ON accounts(account_number);
