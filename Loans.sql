@@ -1,4 +1,5 @@
- create table Loans
+ Drop table Loans
+create table Loans
 (
 	id serial,
 	customer_id int,
