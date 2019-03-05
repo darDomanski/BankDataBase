@@ -4,5 +4,9 @@ CREATE TABLE cards(
   expiration_date DATE,
   CVV INTEGER,
   type_id INTEGER,
-  operator_id INTEGER
+  operator_id INTEGER,
+  FOREIGN KEY (account_id) REFERENCES accounts(id),
+  FOREIGN KEY (type_id) REFERENCES card_types(id),
+  FOREIGN KEY (operator_id) REFERENCES operators(id)
 );
+DROP TABLE cards;
