@@ -1,7 +1,7 @@
-create table LoanTypes
+create table loan_types
 (
 	id serial
-		constraint LoanTypes_pk
+		constraint loan_types_pk
 			primary key,
 	duration int,
 	RRSO DECIMAL(2,2),
