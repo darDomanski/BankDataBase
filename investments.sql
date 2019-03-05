@@ -7,6 +7,6 @@ create table Investments
 
 	PRIMARY KEY (id),
   FOREIGN KEY (customer_id) REFERENCES customers(id),
-	FOREIGN KEY (invest_type_id) REFERENCES investmenttypes(id)
+	FOREIGN KEY (invest_type_id) REFERENCES investment_types(id)
 
 );

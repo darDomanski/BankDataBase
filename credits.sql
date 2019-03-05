@@ -7,7 +7,7 @@ create table Credits
 
 	PRIMARY KEY (id),
 	FOREIGN KEY (custumer_id) REFERENCES Customers(id),
-  FOREIGN KEY (credit_type_id) REFERENCES CreditTypes(id)
+  FOREIGN KEY (credit_type_id) REFERENCES credit_types(id)
 
 
 );

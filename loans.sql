@@ -6,7 +6,7 @@ create table Loans
 	loan_type_id int,
 
 	PRIMARY KEY (id),
-  FOREIGN KEY (customer_id) REFERENCES Customers(id),
-	FOREIGN KEY (loan_type_id) REFERENCES LoanTypes(id)
+  FOREIGN KEY (customer_id) REFERENCES customers(id),
+	FOREIGN KEY (loan_type_id) REFERENCES loan_types(id)
 
 );
