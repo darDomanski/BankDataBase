@@ -6,6 +6,6 @@ CREATE TABLE accounts (
                         open_date DATE NOT NULL,
                         balance_id int,
                         FOREIGN KEY (customer_id) REFERENCES customers(id),
-                        FOREIGN KEY (account_type_id) REFERENCES accountTypes(id),
+                        FOREIGN KEY (account_type_id) REFERENCES account_types(id),
                         FOREIGN KEY (balance_id) REFERENCES balances(id)
                         );

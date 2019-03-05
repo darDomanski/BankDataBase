@@ -5,4 +5,5 @@ create table addresses
   zip_code varchar(15)        not null,
   city     varchar(80)        not null,
   country  varchar(100)
-);
+)
+;
