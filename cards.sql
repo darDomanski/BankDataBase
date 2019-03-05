@@ -1,8 +1,8 @@
 CREATE TABLE cards(
   id SERIAL PRIMARY KEY,
   account_id INTEGER,
-  expiration_date DATE,
-  CVV INTEGER,
+  expiration_date DATE NOT NULL,
+  CVV INTEGER NOT NULL,
   type_id INTEGER,
   operator_id INTEGER,
   FOREIGN KEY (account_id) REFERENCES accounts(id),
