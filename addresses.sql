@@ -1,4 +1,4 @@
-create table addresses
+create table if not exists addresses
 (
   id       serial PRIMARY KEY not null,
   street   varchar(50)        not null,
