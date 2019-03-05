@@ -20,6 +20,11 @@ CREATE OR REPLACE FUNCTION process_accounts_archive() RETURNS TRIGGER AS $$
   $$ LANGUAGE plpgsql;
 
 CREATE TRIGGER account_archivizer AFTER DELETE ON accounts FOR EACH ROW EXECUTE PROCEDURE process_accounts_archive();
+DROP TRIGGER account_archivizer ON accounts;
 
-
-
+INSERT INTO addresses(street, zip_code, city, country) VALUES('Skotnicka 199', '30-394', 'Krakow', 'Poland');
+INSERT INTO customers(customer_name, customer_surname, birth_date, address_id, phone, email, sex_id, pesel, start_date) VALUES('Karol', 'Trzaska', '1996-06-14', 1, 732828336, 'karoltrzaska19@gmail.com', 1, 96061411154, '2018-04-15');
+INSERT INTO accounts(customer_id, account_type_id, account_number, open_date, balance_id) VALUES(1, 2, 534324123, '14-06-2018', 1);
+DELETE FROM accounts WHERE id=1;
+SELECT * FROM accounts;
+SELECT * FROM accounts_archive;
