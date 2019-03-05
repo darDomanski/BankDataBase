@@ -14,7 +14,7 @@ CREATE UNIQUE INDEX uidx_accnumber ON accounts(account_number);
 
 CREATE OR REPLACE FUNCTION process_accounts_archive() RETURNS TRIGGER AS $$
   BEGIN
-    INSERT INTO accounts_archive SELECT OLD.id, OLD.customer_id, OLD.accType.id, OLD.account_number, OLD.open_date, now();
+    INSERT INTO accounts_archive SELECT OLD.id, OLD.customer_id, OLD.account_type_id, OLD.account_number, OLD.open_date, now();
     RETURN NULL;
   end;
   $$ LANGUAGE plpgsql;
