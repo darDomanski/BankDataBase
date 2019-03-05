@@ -4,7 +4,7 @@ create table genders
   sex VARCHAR(20) NOT NULL
 );
 
-insert into genders
+insert into genders (sex)
 values ('male'),
        ('female'),
        ('other');
