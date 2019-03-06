@@ -12,3 +12,4 @@ CREATE TABLE if not exists customers_archive
   start_date       DATE                      NOT NULL,
   end_date         DATE default current_date NOT NULL
 );
+
