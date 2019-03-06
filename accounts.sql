@@ -11,11 +11,15 @@ CREATE TABLE accounts (
 CREATE UNIQUE INDEX uidx_accnumber ON accounts(account_number);
 
 
-CREATE OR REPLACE FUNCTION delete_balance() RETURNS TRIGGER AS $$
+CREATE OR REPLACE FUNCTION delete_handler() RETURNS TRIGGER AS $$
   BEGIN
-    DELETE FROM balances WHERE account_id = id;
+    DELETE FROM balances WHERE account_id = OLD.id;
+    DELETE FROM transactions WHERE account_id = OLD.id;
+    RETURN OLD;
   end;
   $$ LANGUAGE plpgsql;
+
+CREATE TRIGGER delete_handler BEFORE DELETE ON accounts FOR EACH ROW EXECUTE PROCEDURE delete_handler();
 
 
 CREATE OR REPLACE FUNCTION process_accounts_archive() RETURNS TRIGGER AS $$
