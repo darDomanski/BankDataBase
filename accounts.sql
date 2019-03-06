@@ -11,6 +11,20 @@ CREATE TABLE accounts (
 CREATE UNIQUE INDEX uidx_accnumber ON accounts(account_number);
 
 
+CREATE OR REPLACE FUNCTION balance_handle() RETURNS TRIGGER AS $$
+  BEGIN
+    IF(TG_OP = 'UPDATE' AND OLD.id <> NEW.id) THEN
+          UPDATE balances SET account_id = NEW.id WHERE account_id = OLD.id;
+    ELSEIF (TG_OP = 'INSERT') THEN
+        INSERT INTO balances (currency_id, amount, account_id) VALUES (1, 0, NEW.id);
+    end if;
+    RETURN NEW;
+  end;
+  $$ LANGUAGE plpgsql;
+
+CREATE TRIGGER balance_handler AFTER INSERT OR UPDATE ON accounts FOR EACH ROW EXECUTE PROCEDURE balance_handle();
+
+
 CREATE OR REPLACE FUNCTION delete_handler() RETURNS TRIGGER AS $$
   BEGIN
     DELETE FROM balances WHERE account_id = OLD.id;
