@@ -1,4 +1,4 @@
-CREATE TABLE accounts_archive
+CREATE TABLE if not exists accounts_archive
 (
   id              SERIAL PRIMARY KEY,
   customer_id     INTEGER REFERENCES customers_archive (id),
