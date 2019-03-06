@@ -11,9 +11,9 @@ create table investmen_types
 );
 
 insert into investmen_types (duration,RRSO,name)
-values (12,0.60,'super');
+values (12,0.60,'investment super');
 insert into investmen_types (duration,RRSO,name)
-values (6,0.35,'normal');
+values (6,0.35,'investment normal');
 insert into investmen_types (duration,RRSO,name)
-values (3,0.20,'simple');
+values (3,0.20,'investment simple');
 

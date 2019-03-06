@@ -11,9 +11,3 @@ create table loans
 
 );
 
-INSERT INTO loans (customer_id,loan_type_id) values (4,1);
-INSERT INTO loans (customer_id,loan_type_id) values (4,1);
-INSERT INTO loans (customer_id,loan_type_id) values (4,2);
-INSERT INTO loans (customer_id,loan_type_id) values (4,3);
-INSERT INTO loans (customer_id,loan_type_id) values (4,1);
-INSERT INTO loans (customer_id,loan_type_id) values (4,2);

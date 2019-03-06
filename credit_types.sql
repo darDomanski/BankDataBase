@@ -14,8 +14,8 @@ create table credit_types
 
 
 insert into credit_types (duration,RRSO,name)
-values (12,0.60,'for young');
+values (12,0.60,'credit for young');
 insert into credit_types (duration,RRSO,name)
-values (6,0.35,'for family');
+values (6,0.35,'credit for family');
 insert into credit_types (duration,RRSO,name)
-values (3,0.20,'for seniors');
+values (3,0.20,'credit for seniors');

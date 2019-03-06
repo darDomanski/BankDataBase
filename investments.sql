@@ -11,9 +11,3 @@ create table investments
 
 );
 
-INSERT INTO investments (customer_id,invest_type_id) values (4,1);
-INSERT INTO investments (customer_id,invest_type_id) values (4,1);
-INSERT INTO investments (customer_id,invest_type_id) values (4,2);
-INSERT INTO investments (customer_id,invest_type_id) values (4,3);
-INSERT INTO investments (customer_id,invest_type_id) values (4,1);
-INSERT INTO investments (customer_id,invest_type_id) values (4,2);
