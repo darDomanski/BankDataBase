@@ -9,5 +9,6 @@ CREATE TABLE if not exists customers_archive
   email            VARCHAR(50)               NOT NULL,
   sex_id           INT                       NOT NULL references genders (id),
   pesel            VARCHAR(11)               NOT NULL,
+  start_date       DATE                      NOT NULL,
   end_date         DATE default current_date NOT NULL
 );
