@@ -215,3 +215,19 @@ CREATE VIEW credit_4 AS
   ON credits.credit_type_id = credit_types.id
   where credit_types.id = 4;
 SELECT * FROM credit_4;
+
+
+CREATE OR REPLACE FUNCTION update_view_credit4() RETURNS TRIGGER AS $$
+  BEGIN
+    IF(TG_OP = 'UPDATE' AND OLD.id <> NEW.id) THEN
+          UPDATE balances SET account_id = NEW.id WHERE account_id = OLD.id;
+    ELSEIF (TG_OP = 'INSERT') THEN
+        INSERT INTO balances (currency_id, amount, account_id) VALUES (1, 0, NEW.id);
+    end if;
+    RETURN NEW;
+  end;
+  $$ LANGUAGE plpgsql;
+
+CREATE TRIGGER update_view_credit4 AFTER UPDATE OR INSERT ON credit FOR EACH ROW EXECUTE PROCEDURE update_view_credit4();
+
+
