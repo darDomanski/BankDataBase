@@ -2,12 +2,12 @@ CREATE TABLE accounts (
   id SERIAL PRIMARY KEY,
   customer_id INTEGER,
   account_type_id INTEGER,
-  account_number INTEGER NOT NULL,
+  account_number INTEGER NOT NULL UNIQUE,
   open_date DATE NOT NULL,
   FOREIGN KEY (customer_id) REFERENCES customers(id),
   FOREIGN KEY (account_type_id) REFERENCES account_types(id)
 );
-
+ALTER TABLE accounts add CONSTRAINT uniqueAccountNumber UNIQUE (account_number);
 CREATE UNIQUE INDEX uidx_accnumber ON accounts(account_number);
 
 

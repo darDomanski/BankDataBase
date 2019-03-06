@@ -23,7 +23,5 @@ CREATE TRIGGER moveDeletedAddress
   FOR EACH ROW
 EXECUTE PROCEDURE copy_address_to_archive();
 
-select *
-from addresses;
-
-COPY addresses FROM '/home/darski/codecool/advanced/tw2/BankDataBase/data_sources/addresses.csv' delimiter '|';
+COPY addresses FROM '/home/karol/codecool/Codecool-advanced-module/II TW-Week/BankDataBase/addresses.csv' DELIMITER ',';
+SELECT * FROM addresses;

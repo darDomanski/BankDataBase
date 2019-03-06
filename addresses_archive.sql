@@ -5,5 +5,4 @@ create table if not exists addresses_archive
   zip_code   varchar(15)        not null,
   city       varchar(80)        not null,
   country    varchar(100)       not null
-)
-;
+);

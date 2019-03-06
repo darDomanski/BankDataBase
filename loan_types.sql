@@ -1,6 +1,3 @@
-
-DROP TABLE loan_types
-
 create table loan_types
 (
 	id serial
@@ -10,10 +7,3 @@ create table loan_types
 	RRSO DECIMAL(2,2),
 	name VARCHAR(50)
 );
-
-insert into loan_types (duration,RRSO,name)
-values (12,0.60,'loan : last');
-insert into loan_types (duration,RRSO,name)
-values (6,0.35,'loan : second');
-insert into loan_types (duration,RRSO,name)
-values (3,0.20,'loan : first');

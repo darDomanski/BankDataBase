@@ -5,7 +5,3 @@ CREATE TABLE currencies(
   pln_converter DECIMAL(8,0) NOT NULL
 );
 
-ALTER TABLE currencies DROP COLUMN dollar_converter;
-ALTER TABLE currencies DROP COLUMN pln_converter;
-ALTER TABLE currencies ADD COLUMN dollar_converter DECIMAL(8,0);
-ALTER TABLE currencies ADD COLUMN pln_converter DECIMAL(8,0);

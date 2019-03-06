@@ -10,4 +10,3 @@ CREATE TABLE cards
   FOREIGN KEY (type_id) REFERENCES card_types (id),
   FOREIGN KEY (operator_id) REFERENCES operators (id)
 );
-DROP TABLE cards;
