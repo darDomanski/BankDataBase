@@ -12,7 +12,6 @@ CREATE TABLE if not exists customers
   start_date       DATE               NOT NULL
 );
 
-drop table customers cascade;
 
 CREATE OR REPLACE FUNCTION copy_customer_to_archive() returns trigger as
 $$
@@ -31,5 +30,3 @@ CREATE TRIGGER moveDeleted
   ON customers
   FOR EACH ROW
 EXECUTE PROCEDURE copy_customer_to_archive();
-
-COPY customers from '/home/darski/codecool/advanced/tw2/BankDataBase/data_sources/customers.csv' delimiter ',';

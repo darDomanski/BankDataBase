@@ -4,7 +4,7 @@ CREATE TABLE if not exists customers_archive
   customer_name    VARCHAR(50)               NOT NULL,
   customer_surname VARCHAR(50)               NOT NULL,
   birth_date       DATE                      NOT NULL,
-  address_id       int                       NOT NULL references addresses_archive (address_id),
+  address_id       int                       NOT NULL,
   phone            INT                       NOT NULL,
   email            VARCHAR(50)               NOT NULL,
   sex_id           INT                       NOT NULL references genders (id),
