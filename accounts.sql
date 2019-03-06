@@ -10,6 +10,14 @@ CREATE TABLE accounts (
 
 CREATE UNIQUE INDEX uidx_accnumber ON accounts(account_number);
 
+
+CREATE OR REPLACE FUNCTION delete_balance() RETURNS TRIGGER AS $$
+  BEGIN
+    DELETE FROM balances WHERE account_id = id;
+  end;
+  $$ LANGUAGE plpgsql;
+
+
 CREATE OR REPLACE FUNCTION process_accounts_archive() RETURNS TRIGGER AS $$
   BEGIN
     INSERT INTO accounts_archive SELECT OLD.id, OLD.customer_id, OLD.account_type_id, OLD.account_number, OLD.open_date, now();
