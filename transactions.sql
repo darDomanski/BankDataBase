@@ -21,9 +21,11 @@ CREATE OR REPLACE FUNCTION check_account_number_exist(number INTEGER) RETURNS BO
   end;
   $$ LANGUAGE plpgsql;
 
+
 CREATE OR REPLACE FUNCTION change_balance() RETURNS TRIGGER AS $$
   BEGIN
     UPDATE balances SET amount = (amount + NEW.change) WHERE account_id = NEW.account_id;
+    RETURN NULL;
   end;
   $$ LANGUAGE plpgsql;
 
