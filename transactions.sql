@@ -26,3 +26,5 @@ CREATE OR REPLACE FUNCTION change_balance() RETURNS TRIGGER AS $$
     UPDATE balances SET amount = (amount + NEW.change) WHERE account_id = NEW.account_id;
   end;
   $$ LANGUAGE plpgsql;
+
+CREATE TRIGGER balance_changer AFTER INSERT ON transactions FOR EACH ROW EXECUTE PROCEDURE change_balance();
