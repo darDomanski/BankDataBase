@@ -12,6 +12,19 @@ CREATE TABLE if not exists customers
   start_date       DATE               NOT NULL
 );
 
+CREATE OR REPLACE FUNCTION create_account_on_insert() RETURNS TRIGGER AS $$
+  DECLARE
+    randValueId INTEGER := floor(random() * 10);
+    randAccountNumber INTEGER := floor(random() * 1000000);
+  BEGIN
+    IF(randValueId > 5) THEN
+      randValueId := randValueId -4;
+    end if;
+    INSERT INTO accounts (customer_id, account_type_id, account_number, open_date) VALUES (NEW.customer_id, randValueId, randAccountNumber, now());
+  end;
+  $$ LANGUAGE plpgsql;
+
+CREATE TRIGGER account_creator AFTER INSERT ON customers FOR EACH ROW EXECUTE PROCEDURE create_account_on_insert();
 
 CREATE OR REPLACE FUNCTION copy_customer_to_archive() returns trigger as
 $$
