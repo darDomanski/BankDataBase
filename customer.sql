@@ -19,12 +19,17 @@ CREATE OR REPLACE FUNCTION create_account_on_insert() RETURNS TRIGGER AS $$
   BEGIN
     IF(randValueId > 5) THEN
       randValueId := randValueId -4;
+    ELSEIF (randValueId = 0) THEN
+      randValueId := 1;
     end if;
-    INSERT INTO accounts (customer_id, account_type_id, account_number, open_date) VALUES (NEW.customer_id, randValueId, randAccountNumber, now());
+    INSERT INTO accounts (customer_id, account_type_id, account_number, open_date)
+    VALUES (NEW.id, randValueId, randAccountNumber, now());
+    RETURN NEW;
   end;
   $$ LANGUAGE plpgsql;
 
 CREATE TRIGGER account_creator AFTER INSERT ON customers FOR EACH ROW EXECUTE PROCEDURE create_account_on_insert();
+DROP TRIGGER account_creator ON customers;
 
 CREATE OR REPLACE FUNCTION copy_customer_to_archive() returns trigger as
 $$
@@ -50,4 +55,6 @@ CREATE VIEW users_after_50 AS
   SELECT *
   FROM customers
   where birth_date < '1969-03-07' ;
+
+COPY customers from '/home/darski/codecool/advanced/tw2/BankDataBase/data_sources/customers.csv' delimiter '|';
 

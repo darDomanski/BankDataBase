@@ -11,3 +11,4 @@ create table loans
 
 );
 
+COPY loans FROM '/home/darski/codecool/advanced/tw2/BankDataBase/data_sources/loans.csv' delimiter ',';

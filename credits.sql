@@ -78,5 +78,7 @@ CREATE OR REPLACE FUNCTION update_view_credit4() RETURNS TRIGGER AS $$
 CREATE TRIGGER update_view_credit4 AFTER UPDATE OR INSERT ON credits FOR EACH ROW EXECUTE PROCEDURE update_view_credit4();
 CREATE TRIGGER instead_insert_credit4 INSTEAD OF INSERT ON credit_4 FOR EACH ROW EXECUTE PROCEDURE update_view_credit4();
 DROP TRIGGER instead_insert_credit4 ON credit_4;
+DROP TRIGGER update_view_credit4 ON credits;
 INSERT INTO credits (customer_id, credit_type_id) values (4,4);
 
+COPY credits FROM '/home/darski/codecool/advanced/tw2/BankDataBase/data_sources/loans.csv' delimiter ',';

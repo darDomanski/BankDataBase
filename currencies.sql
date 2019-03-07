@@ -5,3 +5,5 @@ CREATE TABLE currencies(
   pln_converter DECIMAL(8,0) NOT NULL
 );
 
+INSERT INTO currencies(currency, dollar_converter, pln_converter)
+VALUES ('PLN', 3.69, 0);

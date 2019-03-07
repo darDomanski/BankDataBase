@@ -5,7 +5,7 @@ CREATE TABLE if not exists customers_archive
   customer_surname VARCHAR(50)               NOT NULL,
   birth_date       DATE                      NOT NULL,
   address_id       int                       NOT NULL,
-  phone            INT                       NOT NULL,
+  phone            BIGINT                    NOT NULL,
   email            VARCHAR(50)               NOT NULL,
   sex_id           INT                       NOT NULL references genders (id),
   pesel            VARCHAR(11)               NOT NULL,
@@ -13,3 +13,4 @@ CREATE TABLE if not exists customers_archive
   end_date         DATE default current_date NOT NULL
 );
 
+drop table customers_archive;

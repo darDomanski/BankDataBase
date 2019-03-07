@@ -11,3 +11,9 @@ create table investments
 
 );
 
+COPY investments FROM '/home/darski/codecool/advanced/tw2/BankDataBase/data_sources/loans.csv' delimiter ',';
+SELECT *
+FROM investments;
+
+SELECT *
+FROM loan_types;

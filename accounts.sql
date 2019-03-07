@@ -1,15 +1,16 @@
 CREATE TABLE accounts (
-  id SERIAL PRIMARY KEY,
-  customer_id INTEGER,
-  account_type_id INTEGER,
-  account_number INTEGER NOT NULL UNIQUE,
-  open_date DATE NOT NULL,
-  FOREIGN KEY (customer_id) REFERENCES customers(id),
-  FOREIGN KEY (account_type_id) REFERENCES account_types(id)
+                        id              SERIAL PRIMARY KEY,
+                        customer_id     INTEGER,
+                        account_type_id INTEGER,
+                        account_number  BIGINT NOT NULL UNIQUE,
+                        open_date       DATE   NOT NULL,
+                        FOREIGN KEY (customer_id) REFERENCES customers(id),
+                        FOREIGN KEY (account_type_id) REFERENCES account_types(id)
 );
 ALTER TABLE accounts add CONSTRAINT uniqueAccountNumber UNIQUE (account_number);
 CREATE UNIQUE INDEX uidx_accnumber ON accounts(account_number);
-
+ALTER TABLE accounts
+  ALTER COLUMN account_number TYPE BIGINT;
 
 CREATE OR REPLACE FUNCTION balance_handle() RETURNS TRIGGER AS $$
   BEGIN
@@ -44,3 +45,5 @@ CREATE OR REPLACE FUNCTION process_accounts_archive() RETURNS TRIGGER AS $$
   $$ LANGUAGE plpgsql;
 
 CREATE TRIGGER account_archivizer AFTER DELETE ON accounts FOR EACH ROW EXECUTE PROCEDURE process_accounts_archive();
+
+COPY accounts from '/home/darski/codecool/advanced/tw2/BankDataBase/data_sources/accounts.csv' delimiter '|';
