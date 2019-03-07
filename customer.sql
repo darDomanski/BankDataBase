@@ -43,3 +43,11 @@ CREATE TRIGGER moveDeleted
   ON customers
   FOR EACH ROW
 EXECUTE PROCEDURE copy_customer_to_archive();
+
+
+-- DROP VIEW users_after_50;
+CREATE VIEW users_after_50 AS
+  SELECT *
+  FROM customers
+  where birth_date < '1969-03-07' ;
+
